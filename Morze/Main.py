@@ -18,20 +18,30 @@ if __name__ == '__main__':
             try:
                 data = str(input())
             except:
-                print("Неверный тип данных.")
+                print("\nНеверный тип данных.")
 
         elif mode == 2:
-            print("Введите путь к файлу: ", end='')
-            try:
-                filepath = str(input())
-            except:
-                print("Неверный тип данных.")
+            while True:
+                file = None
 
-            file = open(filepath, 'r')
-            try:
-                data = file.read()
-            finally:
-                file.close()
+                print("\nВведите путь к файлу: ", end='')
+                try:
+                    filepath = str(input())
+                except:
+                    print("\nНеверный тип данных.")
+                    continue
+
+                try:
+                    file = open(filepath, 'r')
+                    data = file.read()
+                except:
+                    print("Невозможно открыть файл!")
+                    continue
+
+                if file:
+                    file.close()
+
+                break
         elif mode == 3:
             break
         
@@ -41,7 +51,7 @@ if __name__ == '__main__':
             try:
                 mode = int(input())
             except:
-                print("Неверный тип данных.")
+                print("\nНеверный тип данных.")
             if mode == 1:
                 data = Morze.Crypt(data)
             elif mode == 2:
@@ -57,7 +67,7 @@ if __name__ == '__main__':
             try:
                 mode = int(input())
             except:
-                print("Неверный тип данных.")
+                print("\nНеверный тип данных.")
 
             if mode == 1:
                 print("Обработанный текст: " + data)
