@@ -12,6 +12,8 @@ if __name__ == '__main__':
         except:
             print("Неверный тип данных.")
 
+            continue
+
         data = ''
         if mode == 1:
             print("Введите текст: ", end='')

@@ -1,15 +1,20 @@
-import Entropy
+import Haffman
+import os
+import datetime
+import json
+import re
 
 if __name__ == '__main__':
     mode = 0
 
     # Выбор режима, пока не подана команда выход.
-    while mode != 2:
-        print("\nРежим работы:\n1) С фалом;\n2) Выход.\n\nВвод: ", end='')
+    while mode != 3:
+        print("\nРежим работы:\n1) С файлом;\n2) Удаление каталогов;\n3) Выход.\n\nВвод: ", end='')
         try:
             mode = int(input())
         except:
             print("\nНеверный тип данных.")
+
             continue
 
         if mode == 1:
@@ -36,8 +41,26 @@ if __name__ == '__main__':
                 break
 
         elif mode == 2:
+            dirs = os.listdir()
+
+            for dir in dirs:
+                if re.fullmatch('\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}', dir):
+                    os.remove(dir+"\code.json")
+                    os.removedirs(dir)
+
+            continue
+
+        elif mode == 3:
             break
 
-        [power, Hartly, Shennon, redundancy] = Entropy.CalcEntropy(data)
+        haffman = Haffman.Haffman(data)
+        codes = haffman.get_codes()
 
-        print(f"\nМощность алфавита: {power}\nЭнтропия Хартли: {Hartly}\nЭнтропия Шеннона: {Shennon}\nИзбыточность алфавита: {redundancy}\n")
+        folder = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+
+        if not os.path.isdir(folder):
+            os.mkdir(folder)
+
+        file = open(folder + "/code.json", 'w')
+        json.dump(codes, file)
+        file.close()
