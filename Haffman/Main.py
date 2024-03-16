@@ -12,7 +12,7 @@ if __name__ == '__main__':
         print("\nРежим работы:\n1) С файлом;\n2) Удаление каталогов;\n3) Выход.\n\nВвод: ", end='')
         try:
             mode = int(input())
-        except:
+        except ValueError:
             print("\nНеверный тип данных.")
 
             continue

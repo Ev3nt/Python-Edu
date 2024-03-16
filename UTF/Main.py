@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
         if mode == 1:
             [data, bits] = UTF.Crypt(codes, data)
-            avgBits = bits / len(data)
+            avgBits = bits / sourceSize
 
             resultSize = len(data)
         elif mode == 2:
