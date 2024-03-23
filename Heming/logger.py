@@ -6,7 +6,8 @@ class Logger:
     '''Logger system'''
 
     def __init__(self, logfile):
-        logging.basicConfig(filename=logfile, level=logging.DEBUG, filemode='w', format='%(levelname)s:%(asctime)s:%(message)s')
+        f = '%(levelname)s:%(asctime)s:%(message)s'
+        logging.basicConfig(filename=logfile, level=logging.DEBUG, filemode='w', format=f)
 
     def error(self, text):
         '''Save error message in log file.'''

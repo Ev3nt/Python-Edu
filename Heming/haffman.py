@@ -31,7 +31,7 @@ class Haffman:
                 return
             walk(node.left, path + '0')
             walk(node.right, path + '1')
-            
+
         walk(frequences[0][1])
 
     def get_codes(self):
