@@ -18,7 +18,7 @@ class Window(QMainWindow):
 
         super().__init__()
 
-        uic.loadUi("Qt\\main.ui", self)
+        uic.loadUi("Practice 9\\main.ui", self)
 
         self.menu_open.triggered.connect(self.open_table)
         self.menu_close.triggered.connect(self.close_table)
